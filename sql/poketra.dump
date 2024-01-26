@@ -1,0 +1,556 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.9 (Ubuntu 14.9-1.pgdg22.04+1)
+-- Dumped by pg_dump version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: confection_matiere; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.confection_matiere (
+    id integer NOT NULL,
+    id_look integer,
+    id_taille integer,
+    id_matiere integer,
+    quantite integer
+);
+
+
+ALTER TABLE public.confection_matiere OWNER TO liantsiky;
+
+--
+-- Name: confection_matiere_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.confection_matiere_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.confection_matiere_id_seq OWNER TO liantsiky;
+
+--
+-- Name: confection_matiere_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.confection_matiere_id_seq OWNED BY public.confection_matiere.id;
+
+
+--
+-- Name: confection_time; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.confection_time (
+    id integer NOT NULL,
+    id_type integer,
+    id_look integer,
+    id_taille integer,
+    temps double precision
+);
+
+
+ALTER TABLE public.confection_time OWNER TO liantsiky;
+
+--
+-- Name: confection_time_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.confection_time_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.confection_time_id_seq OWNER TO liantsiky;
+
+--
+-- Name: confection_time_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.confection_time_id_seq OWNED BY public.confection_time.id;
+
+
+--
+-- Name: look; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.look (
+    id integer NOT NULL,
+    designation character varying(50)
+);
+
+
+ALTER TABLE public.look OWNER TO liantsiky;
+
+--
+-- Name: look_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.look_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.look_id_seq OWNER TO liantsiky;
+
+--
+-- Name: look_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.look_id_seq OWNED BY public.look.id;
+
+
+--
+-- Name: look_matiere; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.look_matiere (
+    id integer NOT NULL,
+    id_look integer,
+    id_matiere integer
+);
+
+
+ALTER TABLE public.look_matiere OWNER TO liantsiky;
+
+--
+-- Name: look_matiere_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.look_matiere_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.look_matiere_id_seq OWNER TO liantsiky;
+
+--
+-- Name: look_matiere_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.look_matiere_id_seq OWNED BY public.look_matiere.id;
+
+
+--
+-- Name: matiere; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.matiere (
+    id integer NOT NULL,
+    designation character varying(50)
+);
+
+
+ALTER TABLE public.matiere OWNER TO liantsiky;
+
+--
+-- Name: matiere_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.matiere_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.matiere_id_seq OWNER TO liantsiky;
+
+--
+-- Name: matiere_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.matiere_id_seq OWNED BY public.matiere.id;
+
+
+--
+-- Name: taille; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.taille (
+    id integer NOT NULL,
+    designation character varying(50)
+);
+
+
+ALTER TABLE public.taille OWNER TO liantsiky;
+
+--
+-- Name: taille_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.taille_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.taille_id_seq OWNER TO liantsiky;
+
+--
+-- Name: taille_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.taille_id_seq OWNED BY public.taille.id;
+
+
+--
+-- Name: type; Type: TABLE; Schema: public; Owner: liantsiky
+--
+
+CREATE TABLE public.type (
+    id integer NOT NULL,
+    designation character varying(50)
+);
+
+
+ALTER TABLE public.type OWNER TO liantsiky;
+
+--
+-- Name: type_id_seq; Type: SEQUENCE; Schema: public; Owner: liantsiky
+--
+
+CREATE SEQUENCE public.type_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.type_id_seq OWNER TO liantsiky;
+
+--
+-- Name: type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: liantsiky
+--
+
+ALTER SEQUENCE public.type_id_seq OWNED BY public.type.id;
+
+
+--
+-- Name: confection_matiere id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_matiere ALTER COLUMN id SET DEFAULT nextval('public.confection_matiere_id_seq'::regclass);
+
+
+--
+-- Name: confection_time id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_time ALTER COLUMN id SET DEFAULT nextval('public.confection_time_id_seq'::regclass);
+
+
+--
+-- Name: look id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look ALTER COLUMN id SET DEFAULT nextval('public.look_id_seq'::regclass);
+
+
+--
+-- Name: look_matiere id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look_matiere ALTER COLUMN id SET DEFAULT nextval('public.look_matiere_id_seq'::regclass);
+
+
+--
+-- Name: matiere id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.matiere ALTER COLUMN id SET DEFAULT nextval('public.matiere_id_seq'::regclass);
+
+
+--
+-- Name: taille id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.taille ALTER COLUMN id SET DEFAULT nextval('public.taille_id_seq'::regclass);
+
+
+--
+-- Name: type id; Type: DEFAULT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.type ALTER COLUMN id SET DEFAULT nextval('public.type_id_seq'::regclass);
+
+
+--
+-- Data for Name: confection_matiere; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.confection_matiere (id, id_look, id_taille, id_matiere, quantite) FROM stdin;
+\.
+
+
+--
+-- Data for Name: confection_time; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.confection_time (id, id_type, id_look, id_taille, temps) FROM stdin;
+\.
+
+
+--
+-- Data for Name: look; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.look (id, designation) FROM stdin;
+1	luxe
+2	sport
+\.
+
+
+--
+-- Data for Name: look_matiere; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.look_matiere (id, id_look, id_matiere) FROM stdin;
+1	1	1
+2	1	2
+3	2	1
+\.
+
+
+--
+-- Data for Name: matiere; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.matiere (id, designation) FROM stdin;
+1	cuire
+2	soga
+\.
+
+
+--
+-- Data for Name: taille; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.taille (id, designation) FROM stdin;
+1	S
+2	M
+\.
+
+
+--
+-- Data for Name: type; Type: TABLE DATA; Schema: public; Owner: liantsiky
+--
+
+COPY public.type (id, designation) FROM stdin;
+1	sac a dos
+2	cabas
+\.
+
+
+--
+-- Name: confection_matiere_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.confection_matiere_id_seq', 1, false);
+
+
+--
+-- Name: confection_time_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.confection_time_id_seq', 1, false);
+
+
+--
+-- Name: look_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.look_id_seq', 2, true);
+
+
+--
+-- Name: look_matiere_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.look_matiere_id_seq', 3, true);
+
+
+--
+-- Name: matiere_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.matiere_id_seq', 2, true);
+
+
+--
+-- Name: taille_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.taille_id_seq', 2, true);
+
+
+--
+-- Name: type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: liantsiky
+--
+
+SELECT pg_catalog.setval('public.type_id_seq', 2, true);
+
+
+--
+-- Name: confection_matiere confection_matiere_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_matiere
+    ADD CONSTRAINT confection_matiere_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: confection_time confection_time_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_time
+    ADD CONSTRAINT confection_time_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: look_matiere look_matiere_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look_matiere
+    ADD CONSTRAINT look_matiere_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: look look_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look
+    ADD CONSTRAINT look_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: matiere matiere_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.matiere
+    ADD CONSTRAINT matiere_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: taille taille_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.taille
+    ADD CONSTRAINT taille_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: type type_pkey; Type: CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.type
+    ADD CONSTRAINT type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: confection_matiere confection_matiere_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_matiere
+    ADD CONSTRAINT confection_matiere_id_fkey FOREIGN KEY (id) REFERENCES public.look(id);
+
+
+--
+-- Name: confection_matiere confection_matiere_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_matiere
+    ADD CONSTRAINT confection_matiere_id_fkey1 FOREIGN KEY (id) REFERENCES public.taille(id);
+
+
+--
+-- Name: confection_matiere confection_matiere_id_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_matiere
+    ADD CONSTRAINT confection_matiere_id_fkey2 FOREIGN KEY (id) REFERENCES public.matiere(id);
+
+
+--
+-- Name: confection_time confection_time_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_time
+    ADD CONSTRAINT confection_time_id_fkey FOREIGN KEY (id) REFERENCES public.type(id);
+
+
+--
+-- Name: confection_time confection_time_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_time
+    ADD CONSTRAINT confection_time_id_fkey1 FOREIGN KEY (id) REFERENCES public.look(id);
+
+
+--
+-- Name: confection_time confection_time_id_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.confection_time
+    ADD CONSTRAINT confection_time_id_fkey2 FOREIGN KEY (id) REFERENCES public.taille(id);
+
+
+--
+-- Name: look_matiere look_matiere_id_look_fkey; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look_matiere
+    ADD CONSTRAINT look_matiere_id_look_fkey FOREIGN KEY (id_look) REFERENCES public.look(id);
+
+
+--
+-- Name: look_matiere look_matiere_id_matiere_fkey; Type: FK CONSTRAINT; Schema: public; Owner: liantsiky
+--
+
+ALTER TABLE ONLY public.look_matiere
+    ADD CONSTRAINT look_matiere_id_matiere_fkey FOREIGN KEY (id_matiere) REFERENCES public.matiere(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
