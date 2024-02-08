@@ -37,6 +37,7 @@ public class DaoHelper {
 	        PARSING.put(int.class, Integer::parseInt);
 	        PARSING.put(Integer.class,Integer::parseInt);
 	        PARSING.put(double.class, Double :: parseDouble);
+	        PARSING.put(boolean.class, Boolean::parseBoolean);
 	        PARSING.put(String.class, Function.identity());
 	        PARSING.put(LocalDate.class, LocalDate::parse);
 	        PARSING.put(LocalDateTime.class, LocalDateTime::parse);

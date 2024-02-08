@@ -81,7 +81,7 @@ public class FrontServlet extends HttpServlet {
 //            }
 
             if( this.getUrlMapping().containsKey(url)) {
-                 out.println("Eto2");
+//                 out.println("Eto2");
                 Mapping check= (Mapping) getUrlMapping().get(url);
                 //instance la classe
                 Object tosave = Class.forName(check.getclassName()).getConstructor().newInstance();
@@ -107,20 +107,21 @@ public class FrontServlet extends HttpServlet {
                     checkreturn= Class.forName(check.getclassName()).getMethod(check.getmethod()).invoke(tosave);
                 }
               
+//                s.println("Eto");
                 if (checkreturn instanceof Modelview page){
                     if(page.getIsJson() == false){
                         for(String key : page.getData().keySet()) {
-                             out.println("Eto");
+//                        	System.out.println("ETO");
                             request.setAttribute(key,page.getData().get(key));
-                             out.println(page.getPageJsp());
-                            request.getRequestDispatcher(page.getPageJsp()).forward(request,response);
+//                             out.println(page.getPageJsp());
+//                            request.getRequestDispatcher(page.getPageJsp()).forward(request,response);
                         }
+                        request.getRequestDispatcher(page.getPageJsp()).forward(request,response);
                     } else if (page.getIsJson() == true){
                         Gson gsonObj = new Gson();
                         String jsonStr = gsonObj.toJson(page.getData());
                         request.setAttribute("DisplayJson",jsonStr);
                     }
-//                    request.getRequestDispatcher(page.getPageJsp()).forward(request,response);
                 //raha toa ka hafa mihintsy ilay instance 
                  } else if (MyUtils.isRestAPI(check) == true) {
                     Object [] obj = (Object []) checkreturn;

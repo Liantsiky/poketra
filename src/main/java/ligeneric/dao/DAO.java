@@ -76,6 +76,7 @@ public class DAO {
     public static <T> List <T> findPredicat(Class<T> classe, Connection connexion,String predicat) throws Exception{
     	List <T> liste = new ArrayList<T>();
     	String request = DaoHelper.getSelectPredicatRequest(classe, predicat);
+//    	System.out.println(request);
     	Statement stmt = connexion.createStatement();
     	ResultSet resultset = stmt.executeQuery(request);
     	while(resultset.next()) {
@@ -119,7 +120,7 @@ public class DAO {
     public static <T> List <T> findPredicatView(Class<T> classe,String view, Connection connexion,String predicat) throws Exception{
     	List <T> liste = new ArrayList<T>();
     	String request = DaoHelper.getSelectPredicatRequestView(classe,view, predicat);
-//    	System.out.println(request);
+    	System.out.println(request);
     	Statement stmt = connexion.createStatement();
     	ResultSet resultset = stmt.executeQuery(request);
     	while(resultset.next()) {
