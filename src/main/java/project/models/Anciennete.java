@@ -26,6 +26,13 @@ public class Anciennete {
 	
 	public Anciennete() {}
 	
+	public Anciennete(int anneeMin,int anneeMax,String designation,double tauxAugmentation) {
+		this.setAnneeMin(anneeMin);
+		this.setAnneeMax(anneeMax);
+		this.setDesignation(designation);
+		this.setTauxAugmentation(tauxAugmentation);
+	}
+	
 	//getters && setters
 	
 	public int getId() {

@@ -1,7 +1,6 @@
 package project.models;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 import ligeneric.annotation.Column;
 import ligeneric.annotation.Foreign;
@@ -35,6 +34,13 @@ public class Employe {
 	//constructor
 	public Employe() {}
 	
+	public Employe(String nom,String prenom,Poste poste,LocalDate dateDeNaissance,LocalDate dateEmbauche) {
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setPoste(poste);
+		this.setDateDeNaissance(dateDeNaissance);
+		this.setDateEmbauche(dateEmbauche);
+	}
 	//getters && setters
 	
 	public int getId() {
